@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,Redirect
+} from "react-router-dom";
+import Todo from './todo'
+import User from './user.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Nav from './nav'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-clr p-0">
+    
+    <Router>
+    <Nav/>
+      <Switch>
+      <Route exact path="/">
+        <Redirect to="/todo" /> 
+      </Route>
+      
+        <Route path="/todo">
+          <Todo />
+        </Route>
+        <Route path="/userlist">
+          <User />
+        </Route>
+      </Switch>
+    </Router>
     </div>
   );
 }
